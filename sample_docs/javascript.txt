@@ -1,21 +1,37 @@
-JavaScript interviews almost always test your understanding of the Event Loop and asynchronous execution.
+JavaScript Interview Questions and Answers
+Companies: Meta, Netflix, Airbnb, Stripe, Slack, Shopify
 
-Explain the Event Loop and Task Queue.
+---
 
-Focus: How JS handles non-blocking I/O despite being single-threaded. Understanding the priority of Microtasks (Promises) vs. Macrotasks (setTimeout).
+Q: Explain the Event Loop and Task Queue.
+Asked by: Meta, Netflix, Airbnb
 
-What is "Hoisting" in JavaScript?
+A: JavaScript is single-threaded. The Event Loop continuously checks the call stack and task queue. When the stack is empty, it takes the first task from the queue and executes it. Microtasks (Promises, queueMicrotask) have higher priority than Macrotasks (setTimeout, setInterval, I/O). All microtasks run before the next macrotask. This enables non-blocking I/O: long operations are offloaded, and callbacks run when the stack is clear. Understanding this is critical for async/await and Promise behavior.
 
-Focus: How variable and function declarations are moved to the top of their scope, and the difference between var, let, and const in this context.
+---
 
-What are Closures and give a practical use case.
+Q: What is "Hoisting" in JavaScript?
+Asked by: Stripe, Slack
 
-Focus: A function's ability to "remember" its lexical scope even when executed outside that scope (often used for data privacy).
+A: Hoisting is JavaScript's behavior of moving variable and function declarations to the top of their scope during compilation. var declarations are hoisted but initialized to undefined; let and const are in a "temporal dead zone" until their declaration—accessing them before declaration throws ReferenceError. Function declarations are fully hoisted (name and body); function expressions are not. Use let/const for block scoping and to avoid hoisting surprises.
 
-Difference between == and ===.
+---
 
-Focus: Type coercion. == checks value, while === checks both value and type.
+Q: What are Closures and give a practical use case.
+Asked by: Meta, Netflix, Shopify
 
-Explain Prototypal Inheritance.
+A: A closure is a function that "remembers" its lexical scope even when executed outside that scope. The inner function retains access to variables from the outer function after the outer has returned. Practical use cases: data privacy (creating private variables), partial application, memoization, and event handlers that need to preserve state. Example: const counter = (() => { let count = 0; return () => ++count; })(); creates a private counter.
 
-Focus: How objects inherit properties from other objects, unlike the class-based inheritance found in Java.
+---
+
+Q: Difference between == and ===.
+Asked by: Airbnb, Stripe
+
+A: == (loose equality) performs type coercion before comparison—it converts types to match. "5" == 5 is true. === (strict equality) checks both value and type without coercion. "5" === 5 is false. Always prefer === to avoid unexpected coercion results. Object comparisons use reference equality for both—two objects are equal only if they reference the same object. Use deep equality libraries (e.g., lodash.isEqual) for value comparison of objects.
+
+---
+
+Q: Explain Prototypal Inheritance.
+Asked by: Meta, Netflix, Airbnb
+
+A: JavaScript uses prototypal inheritance—objects inherit from other objects. Each object has an internal [[Prototype]] (accessed via __proto__ or Object.getPrototypeOf). When a property is not found, the engine looks up the prototype chain. Unlike class-based inheritance (Java), there are no classes—only objects. ES6 classes are syntactic sugar over prototypes. Object.create() creates objects with a specified prototype. The prototype chain ends at Object.prototype.

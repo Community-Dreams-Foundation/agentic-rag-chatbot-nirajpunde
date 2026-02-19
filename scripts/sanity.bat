@@ -1,6 +1,6 @@
 @echo off
-REM Windows equivalent of "make sanity" - run from project root
-cd /d "%~dp0"
+REM Windows equivalent of "make sanity" - cd to project root (parent of scripts)
+cd /d "%~dp0.."
 echo == Sanity Check ==
 python scripts/run_sanity.py
 if %ERRORLEVEL% neq 0 exit /b %ERRORLEVEL%

@@ -1,21 +1,37 @@
-Python questions typically lean into "Pythonic" ways of doing things and the language's unique memory/execution model.
+Python Interview Questions and Answers
+Companies: Google, Meta, Amazon, Netflix, Spotify, Dropbox
 
-What is the GIL (Global Interpreter Lock) and how does it affect multi-threading?
+---
 
-Focus: Why Python can't truly run threads in parallel on multiple CPU cores and when to use multiprocessing instead.
+Q: What is the GIL (Global Interpreter Lock) and how does it affect multi-threading?
+Asked by: Google, Meta, Amazon
 
-Explain the difference between deepcopy and shallow copy.
+A: The GIL is a mutex that protects access to Python objects, preventing multiple native threads from executing Python bytecode simultaneously. Only one thread can hold the GIL at a time, which means Python cannot truly run threads in parallel on multiple CPU cores for CPU-bound tasks. For I/O-bound tasks, the GIL is released during I/O operations, so threading can still provide concurrency. For CPU-bound parallelism, use multiprocessing instead, which spawns separate Python processes, each with its own GIL.
 
-Focus: How nested objects are handled when copying lists or dictionaries.
+---
 
-How do Decorators work in Python?
+Q: Explain the difference between deepcopy and shallow copy.
+Asked by: Netflix, Spotify
 
-Focus: Functions that take other functions as arguments to extend behavior without modifying the original code.
+A: A shallow copy creates a new object but inserts references to the objects found in the original. Nested objects are not copied—only references to them. A deep copy creates a completely independent copy, recursively copying all nested objects. Use copy.copy() for shallow and copy.deepcopy() for deep. Shallow copy is faster; deep copy ensures no shared mutable state between the original and copy.
 
-What are List Comprehensions and why are they preferred?
+---
 
-Focus: Readability and performance over traditional for loops.
+Q: How do Decorators work in Python?
+Asked by: Google, Dropbox
 
-How is memory managed in Python?
+A: Decorators are functions that take another function as an argument and extend its behavior without modifying the original code. They use the @decorator syntax, which is equivalent to func = decorator(func). Decorators can add logging, caching, authentication, or timing. They leverage first-class functions and closures. Example: @lru_cache caches function results; @wraps preserves the original function's metadata.
 
-Focus: Reference counting and the cyclic garbage collector.
+---
+
+Q: What are List Comprehensions and why are they preferred?
+Asked by: Meta, Amazon
+
+A: List comprehensions provide a concise way to create lists: [x**2 for x in range(10) if x % 2 == 0]. They are preferred for readability and often performance—they are implemented in C and can be faster than equivalent for loops. They also reduce the chance of off-by-one errors. For complex logic, a regular loop may be clearer. Dict and set comprehensions follow the same pattern.
+
+---
+
+Q: How is memory managed in Python?
+Asked by: Google, Meta
+
+A: Python uses reference counting as its primary garbage collection mechanism. Each object has a reference count; when it reaches zero, the object is deallocated. The cyclic garbage collector handles reference cycles that reference counting cannot detect. The gc module allows manual control. Objects are stored on the heap; the stack holds references and local variables. Memory is managed automatically—no manual allocation or deallocation.

@@ -1,0 +1,117 @@
+{
+  "implemented_features": [
+    "A",
+    "B"
+  ],
+  "qa": [
+    {
+      "question": "What is the GIL and how does it affect Python?",
+      "answer": "According to python.txt, chunk 11, the GIL (Global Interpreter Lock) is a mutex that protects access to Python objects, preventing multiple native threads from executing Python bytecode simultaneously.\n\nIt affects Python by:\n*   Allowing only one thread to hold the GIL at a time, which means Python cannot truly run threads in parallel on multiple CPU cores for CPU-bound tasks.\n*   Releasing the GIL during I/O operations for I/O-bound tasks, allowing threading to still provide concurrency.\n*   Requiring the use of multiprocessing for CPU-bound parallelism, as multiprocessing spawns separate Python processes, each with its own GIL.",
+      "citations": [
+        {
+          "source": "python.txt",
+          "locator": "chunk 11",
+          "snippet": "Python Interview Questions and Answers\nCompanies: Google, Meta, Amazon, Netflix, Spotify, Dropbox\n\n---\n\nQ: What is the GIL (Global Interpreter Lock) and how does it affect multi-threading?\nAsked by: Google, Meta, Amazon\n\nA: The GIL is a mutex that protects access to Python objects, preventing multiple native threads from executing Python bytecode simultaneously. Only one thread can hold the GIL at a time, which means Python cannot truly run threads in parallel on multiple CPU cores for CPU-bound..."
+        },
+        {
+          "source": "python.txt",
+          "locator": "chunk 13",
+          "snippet": "---\n\nQ: What are List Comprehensions and why are they preferred?\nAsked by: Meta, Amazon\n\nA: List comprehensions provide a concise way to create lists: [x**2 for x in range(10) if x % 2 == 0]. They are preferred for readability and often performance\u2014they are implemented in C and can be faster than equivalent for loops. They also reduce the chance of off-by-one errors. For complex logic, a regular loop may be clearer. Dict and set comprehensions follow the same pattern.\n\n---\n\nQ: How is memory mana..."
+        },
+        {
+          "source": "python.txt",
+          "locator": "chunk 12",
+          "snippet": "---\n\nQ: Explain the difference between deepcopy and shallow copy.\nAsked by: Netflix, Spotify\n\nA: A shallow copy creates a new object but inserts references to the objects found in the original. Nested objects are not copied\u2014only references to them. A deep copy creates a completely independent copy, recursively copying all nested objects. Use copy.copy() for shallow and copy.deepcopy() for deep. Shallow copy is faster; deep copy ensures no shared mutable state between the original and copy.\n\n---..."
+        },
+        {
+          "source": "javascript.txt",
+          "locator": "chunk 6",
+          "snippet": "JavaScript Interview Questions and Answers\nCompanies: Meta, Netflix, Airbnb, Stripe, Slack, Shopify\n\n---\n\nQ: Explain the Event Loop and Task Queue.\nAsked by: Meta, Netflix, Airbnb\n\nA: JavaScript is single-threaded. The Event Loop continuously checks the call stack and task queue. When the stack is empty, it takes the first task from the queue and executes it. Microtasks (Promises, queueMicrotask) have higher priority than Macrotasks (setTimeout, setInterval, I/O). All microtasks run before the n..."
+        },
+        {
+          "source": "java.txt",
+          "locator": "chunk 2",
+          "snippet": "---\n\nQ: What is the difference between fail-fast and fail-safe iterators?\nAsked by: Goldman Sachs, Bloomberg\n\nA: Fail-fast iterators (e.g., ArrayList, HashMap) throw ConcurrentModificationException if the collection is modified during iteration. They detect structural changes via a modCount field. Fail-safe iterators (e.g., CopyOnWriteArrayList, ConcurrentHashMap) work on a snapshot and do not throw during modification\u2014they may not reflect changes made during iteration. Use fail-safe for concurr..."
+        }
+      ]
+    },
+    {
+      "question": "Explain the Event Loop and Task Queue in JavaScript.",
+      "answer": "According to javascript.txt, chunk 6, JavaScript is single-threaded. The Event Loop continuously checks the call stack and task queue. When the stack is empty, it takes the first task from the queue and executes it. Microtasks (Promises, queueMicrotask) have higher priority than Macrotasks (setTimeout, setInterval, I/O), and all microtasks run before the next macrotask. This mechanism enables non-blocking I/O by offloading long operations and running callbacks when the stack is clear. Understanding this is critical for async/await and Promise behavior.",
+      "citations": [
+        {
+          "source": "javascript.txt",
+          "locator": "chunk 6",
+          "snippet": "JavaScript Interview Questions and Answers\nCompanies: Meta, Netflix, Airbnb, Stripe, Slack, Shopify\n\n---\n\nQ: Explain the Event Loop and Task Queue.\nAsked by: Meta, Netflix, Airbnb\n\nA: JavaScript is single-threaded. The Event Loop continuously checks the call stack and task queue. When the stack is empty, it takes the first task from the queue and executes it. Microtasks (Promises, queueMicrotask) have higher priority than Macrotasks (setTimeout, setInterval, I/O). All microtasks run before the n..."
+        },
+        {
+          "source": "javascript.txt",
+          "locator": "chunk 8",
+          "snippet": "---\n\nQ: What are Closures and give a practical use case.\nAsked by: Meta, Netflix, Shopify\n\nA: A closure is a function that \"remembers\" its lexical scope even when executed outside that scope. The inner function retains access to variables from the outer function after the outer has returned. Practical use cases: data privacy (creating private variables), partial application, memoization, and event handlers that need to preserve state. Example: const counter = (() => { let count = 0; return () =>..."
+        },
+        {
+          "source": "javascript.txt",
+          "locator": "chunk 7",
+          "snippet": "---\n\nQ: What is \"Hoisting\" in JavaScript?\nAsked by: Stripe, Slack\n\nA: Hoisting is JavaScript's behavior of moving variable and function declarations to the top of their scope during compilation. var declarations are hoisted but initialized to undefined; let and const are in a \"temporal dead zone\" until their declaration\u2014accessing them before declaration throws ReferenceError. Function declarations are fully hoisted (name and body); function expressions are not. Use let/const for block scoping an..."
+        },
+        {
+          "source": "javascript.txt",
+          "locator": "chunk 9",
+          "snippet": "---\n\nQ: Difference between == and ===.\nAsked by: Airbnb, Stripe\n\nA: == (loose equality) performs type coercion before comparison\u2014it converts types to match. \"5\" == 5 is true. === (strict equality) checks both value and type without coercion. \"5\" === 5 is false. Always prefer === to avoid unexpected coercion results. Object comparisons use reference equality for both\u2014two objects are equal only if they reference the same object. Use deep equality libraries (e.g., lodash.isEqual) for value comparis..."
+        },
+        {
+          "source": "javascript.txt",
+          "locator": "chunk 10",
+          "snippet": "---\n\nQ: Explain Prototypal Inheritance.\nAsked by: Meta, Netflix, Airbnb\n\nA: JavaScript uses prototypal inheritance\u2014objects inherit from other objects. Each object has an internal [[Prototype]] (accessed via __proto__ or Object.getPrototypeOf). When a property is not found, the engine looks up the prototype chain. Unlike class-based inheritance (Java), there are no classes\u2014only objects. ES6 classes are syntactic sugar over prototypes. Object.create() creates objects with a specified prototype. Th..."
+        }
+      ]
+    },
+    {
+      "question": "How does HashMap work internally in Java?",
+      "answer": "According to `java.txt, chunk 1`, HashMap internally uses an array of buckets. Each key is hashed to an index, and collisions are managed by chaining. In Java 7, chaining used linked lists, while in Java 8+, it uses balanced trees when a bucket surpasses 8 entries. The default initial capacity is 16, with a load factor of 0.75. The map is resized (rehashed) when its size exceeds the product of capacity and load factor. Java 8+ utilizes TreeNode to improve worst-case performance from O(n) to O(log n) during numerous collisions.",
+      "citations": [
+        {
+          "source": "java.txt",
+          "locator": "chunk 1",
+          "snippet": "Java Interview Questions and Answers\nCompanies: Amazon, Microsoft, Oracle, Goldman Sachs, Bloomberg, Uber\n\n---\n\nQ: How does the HashMap work internally in Java?\nAsked by: Amazon, Microsoft, Oracle\n\nA: HashMap uses an array of buckets. Each key is hashed to an index; collisions are handled by chaining (linked lists in Java 7, balanced trees in Java 8+ when a bucket exceeds 8 entries). The default initial capacity is 16 with a load factor of 0.75. When the size exceeds capacity * load factor, the..."
+        },
+        {
+          "source": "java.txt",
+          "locator": "chunk 2",
+          "snippet": "---\n\nQ: What is the difference between fail-fast and fail-safe iterators?\nAsked by: Goldman Sachs, Bloomberg\n\nA: Fail-fast iterators (e.g., ArrayList, HashMap) throw ConcurrentModificationException if the collection is modified during iteration. They detect structural changes via a modCount field. Fail-safe iterators (e.g., CopyOnWriteArrayList, ConcurrentHashMap) work on a snapshot and do not throw during modification\u2014they may not reflect changes made during iteration. Use fail-safe for concurr..."
+        },
+        {
+          "source": "java.txt",
+          "locator": "chunk 3",
+          "snippet": "---\n\nQ: Explain the Java Memory Model (Stack vs. Heap).\nAsked by: Amazon, Microsoft, Oracle\n\nA: The Stack stores method frames, local variables, and primitive values. Each thread has its own stack. The Heap stores objects and instance variables; it is shared across threads. When a method is called, a frame is pushed onto the stack; when it returns, the frame is popped. Objects are allocated on the heap; references to them live on the stack. The Garbage Collector runs on the heap to reclaim unrea..."
+        },
+        {
+          "source": "java.txt",
+          "locator": "chunk 4",
+          "snippet": "---\n\nQ: What are \"Functional Interfaces\" and why were they introduced in Java 8?\nAsked by: Uber, Microsoft\n\nA: A functional interface has exactly one abstract method (e.g., Runnable, Callable, Supplier, Consumer). They were introduced to enable Lambda expressions and method references. The @FunctionalInterface annotation documents intent. Lambdas provide a concise way to implement these interfaces without anonymous inner classes. Example: Runnable r = () -> System.out.println(\"Hello\"); enables f..."
+        },
+        {
+          "source": "javascript.txt",
+          "locator": "chunk 10",
+          "snippet": "---\n\nQ: Explain Prototypal Inheritance.\nAsked by: Meta, Netflix, Airbnb\n\nA: JavaScript uses prototypal inheritance\u2014objects inherit from other objects. Each object has an internal [[Prototype]] (accessed via __proto__ or Object.getPrototypeOf). When a property is not found, the engine looks up the prototype chain. Unlike class-based inheritance (Java), there are no classes\u2014only objects. ES6 classes are syntactic sugar over prototypes. Object.create() creates objects with a specified prototype. Th..."
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "memory_writes": [
+      {
+        "target": "COMPANY",
+        "summary": "Technical interviews focus on language-specific concepts: Python (GIL, decorators), Java (HashMap, JVM), JavaScript (Event Loop, closures)"
+      },
+      {
+        "target": "USER",
+        "summary": "User prefers weekly summaries on Mondays"
+      },
+      {
+        "target": "USER",
+        "summary": "User is a software engineer preparing for technical interviews"
+      }
+    ]
+  }
+}

@@ -18,8 +18,8 @@ Rules:
 - Target COMPANY for org-wide learnings (interfaces, bottlenecks, patterns useful to colleagues).
 - Be selective. Only output when confident (confidence >= 0.7).
 
-Respond with a JSON object or array. Each item: {"should_write": true, "target": "USER"|"COMPANY", "summary": "...", "confidence": 0.0-1.0}
-If nothing worth storing: {"should_write": false}
+Respond with a JSON object or array. Each item: {{"should_write": true, "target": "USER"|"COMPANY", "summary": "...", "confidence": 0.0-1.0}}
+If nothing worth storing: {{"should_write": false}}
 """
 
 MEMORY_USER_TEMPLATE = """Conversation excerpt:

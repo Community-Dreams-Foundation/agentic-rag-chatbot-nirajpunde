@@ -1,21 +1,37 @@
-Java interviews often focus on memory management, the JVM, and robust Object-Oriented principles.
+Java Interview Questions and Answers
+Companies: Amazon, Microsoft, Oracle, Goldman Sachs, Bloomberg, Uber
 
-How does the HashMap work internally in Java?
+---
 
-Focus: Understanding buckets, hashing, and how Java 8+ handles collisions using balanced trees instead of linked lists when a threshold is met.
+Q: How does the HashMap work internally in Java?
+Asked by: Amazon, Microsoft, Oracle
 
-What is the difference between fail-fast and fail-safe iterators?
+A: HashMap uses an array of buckets. Each key is hashed to an index; collisions are handled by chaining (linked lists in Java 7, balanced trees in Java 8+ when a bucket exceeds 8 entries). The default initial capacity is 16 with a load factor of 0.75. When the size exceeds capacity * load factor, the map is resized (rehashed). Java 8+ uses TreeNode for better worst-case performance from O(n) to O(log n) when many collisions occur.
 
-Focus: Concurrent modification exceptions. ArrayList is fail-fast, while CopyOnWriteArrayList is fail-safe.
+---
 
-Explain the Java Memory Model (Stack vs. Heap).
+Q: What is the difference between fail-fast and fail-safe iterators?
+Asked by: Goldman Sachs, Bloomberg
 
-Focus: Where objects live (Heap) versus where method executions and local variables live (Stack), and how Garbage Collection fits in.
+A: Fail-fast iterators (e.g., ArrayList, HashMap) throw ConcurrentModificationException if the collection is modified during iteration. They detect structural changes via a modCount field. Fail-safe iterators (e.g., CopyOnWriteArrayList, ConcurrentHashMap) work on a snapshot and do not throw during modification—they may not reflect changes made during iteration. Use fail-safe for concurrent access; fail-fast for single-threaded correctness.
 
-What are "Functional Interfaces" and why were they introduced in Java 8?
+---
 
-Focus: Interfaces with exactly one abstract method (like Runnable or Callable) that enable Lambda expressions.
+Q: Explain the Java Memory Model (Stack vs. Heap).
+Asked by: Amazon, Microsoft, Oracle
 
-What is the difference between checked and unchecked exceptions?
+A: The Stack stores method frames, local variables, and primitive values. Each thread has its own stack. The Heap stores objects and instance variables; it is shared across threads. When a method is called, a frame is pushed onto the stack; when it returns, the frame is popped. Objects are allocated on the heap; references to them live on the stack. The Garbage Collector runs on the heap to reclaim unreachable objects.
 
-Focus: Compile-time enforcement (IOException) versus runtime errors (NullPointerException).
+---
+
+Q: What are "Functional Interfaces" and why were they introduced in Java 8?
+Asked by: Uber, Microsoft
+
+A: A functional interface has exactly one abstract method (e.g., Runnable, Callable, Supplier, Consumer). They were introduced to enable Lambda expressions and method references. The @FunctionalInterface annotation documents intent. Lambdas provide a concise way to implement these interfaces without anonymous inner classes. Example: Runnable r = () -> System.out.println("Hello"); enables functional programming patterns in Java.
+
+---
+
+Q: What is the difference between checked and unchecked exceptions?
+Asked by: Oracle, Goldman Sachs
+
+A: Checked exceptions (e.g., IOException, SQLException) must be declared or caught at compile time. The compiler enforces handling. Unchecked exceptions (RuntimeException and its subclasses, e.g., NullPointerException, IllegalArgumentException) do not require declaration. Use checked for recoverable conditions the caller should handle; unchecked for programming errors. Modern Java favors unchecked for many cases to reduce boilerplate.
