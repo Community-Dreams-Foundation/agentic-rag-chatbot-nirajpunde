@@ -62,7 +62,7 @@ def run_gradio():
             return history
 
         try:
-            answer, citations = query_rag(message.strip(), k=5)
+            answer, citations = query_rag(message.strip(), k=2)
         except Exception as e:
             answer = f"Error: {e}"
             citations = []

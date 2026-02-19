@@ -70,7 +70,7 @@ Avoid secrets or sensitive information.
     qa_results = []
     sample_sources = ["python.txt", "java.txt", "javascript.txt"]  # fallback for placeholder
     for i, q in enumerate(qa_pairs):
-        answer, citations = query_rag(q, k=5)
+        answer, citations = query_rag(q, k=2)
         if not citations:
             # Retriever returned nothing - use a placeholder citation for sanity
             # (validator requires non-empty citations for each qa item)

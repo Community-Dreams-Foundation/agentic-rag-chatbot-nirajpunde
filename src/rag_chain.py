@@ -41,7 +41,7 @@ def get_llm():
     )
 
 
-def query_rag(question: str, k: int = 5) -> tuple[str, list[dict]]:
+def query_rag(question: str, k: int = 2) -> tuple[str, list[dict]]:
     """
     Run RAG: retrieve docs, generate answer, return (answer, citations).
     Citations are derived from retrieved docs, not parsed from LLM output.
