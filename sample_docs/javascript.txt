@@ -1,0 +1,21 @@
+JavaScript interviews almost always test your understanding of the Event Loop and asynchronous execution.
+
+Explain the Event Loop and Task Queue.
+
+Focus: How JS handles non-blocking I/O despite being single-threaded. Understanding the priority of Microtasks (Promises) vs. Macrotasks (setTimeout).
+
+What is "Hoisting" in JavaScript?
+
+Focus: How variable and function declarations are moved to the top of their scope, and the difference between var, let, and const in this context.
+
+What are Closures and give a practical use case.
+
+Focus: A function's ability to "remember" its lexical scope even when executed outside that scope (often used for data privacy).
+
+Difference between == and ===.
+
+Focus: Type coercion. == checks value, while === checks both value and type.
+
+Explain Prototypal Inheritance.
+
+Focus: How objects inherit properties from other objects, unlike the class-based inheritance found in Java.

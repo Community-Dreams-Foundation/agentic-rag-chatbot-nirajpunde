@@ -239,16 +239,42 @@ These are optional enhancements. They are not required, but can earn bonus point
 
 ---
 
-## Quick Start (YOU MUST FILL THIS IN)
+## Quick Start
 
-Provide exact commands a judge can run.
-
-Example (replace with your real commands):
+**Prerequisites:** Python 3.10+, a Google API key from [Google AI Studio](https://aistudio.google.com/apikey)
 
 ```text
-# install dependencies
-# run the app
-# open UI or run CLI
+# 1. Clone and enter the repo
+cd agentic-rag-chatbot-nirajpunde
+
+# 2. Create virtual environment (recommended)
+python -m venv venv
+venv\Scripts\activate   # Windows
+# source venv/bin/activate   # macOS/Linux
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Set your Google API key
+# Copy .env.example to .env and add your key:
+# GOOGLE_API_KEY=your_key_here
+
+# 5. Run sanity check (ingest sample_docs, Q&A, memory, produce artifacts)
+make sanity
+# On Windows (if make is not installed): sanity.bat
+# Or: python scripts/run_sanity.py && python scripts/verify_output.py artifacts/sanity_output.json
+
+# 6. Run the Gradio app
+python src/app.py
+```
+
+**CLI usage:**
+```text
+# Index sample_docs
+python src/app.py --index
+
+# Ask a question
+python src/app.py --question "Summarize the main contribution in 3 bullets."
 ```
 
 ---

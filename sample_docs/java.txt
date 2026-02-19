@@ -1,0 +1,21 @@
+Java interviews often focus on memory management, the JVM, and robust Object-Oriented principles.
+
+How does the HashMap work internally in Java?
+
+Focus: Understanding buckets, hashing, and how Java 8+ handles collisions using balanced trees instead of linked lists when a threshold is met.
+
+What is the difference between fail-fast and fail-safe iterators?
+
+Focus: Concurrent modification exceptions. ArrayList is fail-fast, while CopyOnWriteArrayList is fail-safe.
+
+Explain the Java Memory Model (Stack vs. Heap).
+
+Focus: Where objects live (Heap) versus where method executions and local variables live (Stack), and how Garbage Collection fits in.
+
+What are "Functional Interfaces" and why were they introduced in Java 8?
+
+Focus: Interfaces with exactly one abstract method (like Runnable or Callable) that enable Lambda expressions.
+
+What is the difference between checked and unchecked exceptions?
+
+Focus: Compile-time enforcement (IOException) versus runtime errors (NullPointerException).

@@ -1,0 +1,21 @@
+Python questions typically lean into "Pythonic" ways of doing things and the language's unique memory/execution model.
+
+What is the GIL (Global Interpreter Lock) and how does it affect multi-threading?
+
+Focus: Why Python can't truly run threads in parallel on multiple CPU cores and when to use multiprocessing instead.
+
+Explain the difference between deepcopy and shallow copy.
+
+Focus: How nested objects are handled when copying lists or dictionaries.
+
+How do Decorators work in Python?
+
+Focus: Functions that take other functions as arguments to extend behavior without modifying the original code.
+
+What are List Comprehensions and why are they preferred?
+
+Focus: Readability and performance over traditional for loops.
+
+How is memory managed in Python?
+
+Focus: Reference counting and the cyclic garbage collector.
